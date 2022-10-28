@@ -69,7 +69,7 @@ AllHearthToyIndex[180290] = 326064 --Night Fae
 AllHearthToyIndex[184353] = 345393 --Kyrian
 AllHearthToyIndex[183716] = 342122 --Venthyr
 AllHearthToyIndex[188952] = 363799 --Dominated Hearthstone
-AllHearthToyIndex[190237] = 367013--Broker Translocation Matrix
+AllHearthToyIndex[190237] = 367013 --Broker Translocation Matrix
 AllHearthToyIndex[193588] = 375357 --Timewalker's Hearthstone
 
 
@@ -172,7 +172,7 @@ end
 function SpellcastUpdate(spellID)
 	if not InCombatLockdown() then
 		for k in pairs(AllHearthToyIndex) do
-			if spellID == AllHearthToyIndex[k] then
+			if spellID == AllHearthToyIndex[k] or spellID == 346060 then -- there are two necrolord spells, adding one here temporarily, should refactor the spell lists soon
 				SetRandomHearthToy()
 				break
 			end
