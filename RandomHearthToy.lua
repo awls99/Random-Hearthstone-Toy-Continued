@@ -5,6 +5,7 @@ local UsableHearthToyIndex = {} --Usable toys
 local RHTIndex = false --Macro index
 RHT = {} --Setup for button and timeout frame
 local RHTInitialized = false
+local macroVersion = 1 -- macro version to know if we need to forcefully update users
 
 -- Setting up an invisible button named RHTB.  Toys can only be used through a button click, so we need one for the macro to click.
 local frame = CreateFrame("Frame")
@@ -21,7 +22,7 @@ RHT.to:SetScript("OnUpdate", function (self, elapse)
 			GetLearnedStones()
 			if RHTInitialized then
 				SetRandomHearthToy()
-				-- print "RHT initialized" -- uncomment for debugging future versions
+				--print "RHT initialized" -- uncomment for debugging future versions
 				RHT.to:SetScript("OnUpdate", nil)
 			else
 				timeOut = 1
@@ -135,9 +136,18 @@ function GetMacroIndex()
 	local numg, numc = GetNumMacros()
 	for i = 1, numg do
 		local macroCont = GetMacroBody(i)
-		--  Hopefully no other macro ever made has "RHT.b" in it...
-		if string.find(macroCont, "RHT.b") then
-			RHTIndex = i
+		if(macroCont) then -- apperently there's a chance of not having anything here
+			--  Hopefully no other macro ever made has "RHT.b" in it...
+			if string.find(macroCont, "RHT.b") then
+				-- check if we have the correct macro version, purge it if not 
+				-- this fixes issues when the addon got broken and we need people to remake their macros
+				if(string.find(macroCont, "#macro version " .. macroVersion)) then
+					RHTIndex = i
+				else
+					DeleteMacro(i)
+					print "ATTENTION: Your random hearthstone macro had to be deleted due to an update of the game, a new one was created, please add the new macro to your action bar"
+				end
+			end
 		end
 	end
 end
@@ -154,13 +164,14 @@ function CheckMacroIndex()
 end
 
 -- Macro writing time.
+-- if this method is changed, increment macroVersion var
 function GenMacro(itemID, toyName)
 	-- Did we find the index?  If so, edit that. The macro changes the button to the next stone, but only if we aren't in combat; can't SetAttribute. It then "clicks" the RHTB button
 	if RHTIndex then
-		EditMacro(RHTIndex, " ", "INV_MISC_QUESTIONMARK", "#showtooltip item:" .. itemID .. "\r/run if not InCombatLockdown() then RHT.b:SetAttribute(\"item\",\"" .. toyName .. "\") end\r/click RHTB LeftButton 1")
+		EditMacro(RHTIndex, " ", "INV_MISC_QUESTIONMARK", "#showtooltip item:" .. itemID .. "\r#macro version " .. macroVersion .. "\r/run if not InCombatLockdown() then RHT.b:SetAttribute(\"item\",\"" .. toyName .. "\") end\r/click RHTB LeftButton 1")
 	else
 		-- No macro found, make a new one, get it's ID, then set the toy on the invisble button. This one is named so people can find it on first use.
-		CreateMacro("RHT", "INV_MISC_QUESTIONMARK", "#showtooltip item:" .. itemID .. "\r/run if not InCombatLockdown() then RHT.b:SetAttribute(\"item\",\"" .. toyName .. "\") end\r/click RHTB LeftButton 1")
+		CreateMacro("RHT", "INV_MISC_QUESTIONMARK", "#showtooltip item:" .. itemID .. "\r#macro version " .. macroVersion .. "\r/run if not InCombatLockdown() then RHT.b:SetAttribute(\"item\",\"" .. toyName .. "\") end\r/click RHTB LeftButton 1")
 		GetMacroIndex()
 	end
 end
