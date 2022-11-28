@@ -202,6 +202,7 @@ function RandomKey(t)
     for key, value in pairs(t) do
         keys[#keys+1] = key --Store keys in another table.
     end
+    if (not #keys) or (#keys < 1) then return 0 end
     index = keys[math.random(1, #keys)]
     return index
 end
