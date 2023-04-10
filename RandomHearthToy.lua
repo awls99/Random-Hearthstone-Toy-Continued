@@ -81,7 +81,7 @@ AllHearthToyIndex[200630] = 391042 --Ohn'ir Windsage's Hearthstone
 -- This is the meat right here.
 function SetRandomHearthToy()
 	-- Setting the new stone while in combat is bad.
-	--if not InCombatLockdown() then
+	if not InCombatLockdown() then
 		-- Find the macro.
 		CheckMacroIndex()
 		-- Rebuild the stone list if it's empty.
@@ -100,7 +100,7 @@ function SetRandomHearthToy()
 			-- Set button for first use
 			if not RHT.b:GetAttribute("item") then RHT.b:SetAttribute("item",toyName) end
 		end
-	--end
+	end
 end
 
 -- Get stones learned and usable by character
