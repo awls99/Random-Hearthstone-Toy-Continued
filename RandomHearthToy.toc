@@ -1,6 +1,6 @@
-## Interface: 100002
+## Interface: 100007
 ## Title: Random Hearth Toy Continued
 ## Author: awls99
-## Version: 1.1.1
+## Version: 1.1.4
 
 RandomHearthToy.lua
