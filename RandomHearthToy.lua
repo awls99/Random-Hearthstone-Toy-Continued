@@ -8,6 +8,15 @@ local RHTInitialized = false
 local macroVersion = 1 -- macro version to know if we need to forcefully update users
 local needsOne = GetCVar("ActionButtonUseKeyDown")
 
+local SetRandomHearthToy
+local GetLearnedStones
+local GetMacroIndex
+local CheckMacroIndex
+local GenMacro
+local RemoveStone
+local SpellcastUpdate
+local RandomKey
+
 -- Setting up an invisible button named RHTB.  Toys can only be used through a button click, so we need one for the macro to click.
 local frame = CreateFrame("Frame")
 RHT.b = CreateFrame("Button","RHTB",nil,"SecureActionButtonTemplate")
@@ -81,7 +90,7 @@ AllHearthToyIndex[200630] = 391042 --Ohn'ir Windsage's Hearthstone
 -- This is the meat right here.
 function SetRandomHearthToy()
 	-- Setting the new stone while in combat is bad.
-	--if not InCombatLockdown() then
+	if not InCombatLockdown() then
 		-- Find the macro.
 		CheckMacroIndex()
 		-- Rebuild the stone list if it's empty.
@@ -100,19 +109,26 @@ function SetRandomHearthToy()
 			-- Set button for first use
 			if not RHT.b:GetAttribute("item") then RHT.b:SetAttribute("item",toyName) end
 		end
-	--end
+	end
 end
 
 -- Get stones learned and usable by character
+local ToyCollSetting
+local ToyUnCollSetting
+local ToyUsableSetting
 function GetLearnedStones()
 	-- Get the current setting for the toybox so we can set it back after we're done.
-	local ToyCollSetting = C_ToyBox.GetCollectedShown()
-	local ToyUnCollSetting = C_ToyBox.GetUncollectedShown()
-	local ToyUsableSetting = C_ToyBox.GetUnusableShown()
+	if not (ToyCollSetting and ToyUnCollSetting and ToyUsableSetting) then
+        ToyCollSetting = C_ToyBox.GetCollectedShown()
+        ToyUnCollSetting = C_ToyBox.GetUncollectedShown()
+        ToyUsableSetting = C_ToyBox.GetUnusableShown()
+    end
 	
 	C_ToyBox.SetCollectedShown(true) -- List collected toys
 	C_ToyBox.SetUncollectedShown(false) -- Don't list uncollected toys
-	C_ToyBox.SetUnusableShown(false) -- Don't list unusable toys in the the collection.	
+	C_ToyBox.SetUnusableShown(false) -- Don't list unusable toys in the the collection.
+    
+    	
 	
 	-- Go through all the toys to find the usable stons.
 	for i = 1, C_ToyBox.GetNumFilteredToys() do
@@ -123,11 +139,15 @@ function GetLearnedStones()
 			end
 		end
 	end
-	 -- Reset the toybox filter
-	C_ToyBox.SetCollectedShown(ToyCollSetting)
-	C_ToyBox.SetUncollectedShown(ToyUnCollSetting)
-	C_ToyBox.SetUnusableShown(ToyUsableSetting)
+	
 	if next(UsableHearthToyIndex) then
+        -- Reset the toybox filter
+    	C_ToyBox.SetCollectedShown(ToyCollSetting)
+    	C_ToyBox.SetUncollectedShown(ToyUnCollSetting)
+    	C_ToyBox.SetUnusableShown(ToyUsableSetting)
+        ToyCollSetting = nil
+        ToyUnCollSetting = nil
+        ToyUsableSetting = nil
 		RHTInitialized = true
 	end
 end
