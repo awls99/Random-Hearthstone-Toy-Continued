@@ -23,24 +23,18 @@ RHT.b = CreateFrame("Button","RHTB",nil,"SecureActionButtonTemplate")
 RHT.b:SetAttribute("type","item")
 -- Setting up a frame to wait and see if the toybox is loaded before getting stones on login.
 local timeOut = 10 --Delay for checking stones.
-RHT.to = CreateFrame("Frame","RHTO", UIParent)
-RHT.to:SetScript("OnUpdate", function (self, elapse)
-	if timeOut > 0 then
-		timeOut = timeOut - elapse
-	else
-		if C_ToyBox.GetNumToys() > 0 then
-			GetLearnedStones()
-			if RHTInitialized then
-				SetRandomHearthToy()
-				--print "RHT initialized" -- uncomment for debugging future versions
-				RHT.to:SetScript("OnUpdate", nil)
-			else
-				timeOut = 1
-			end
-		else
-			timeOut = 1
-		end
-	end
+C_Timer.After(timeOut, function()
+    local ticker
+    ticker = C_Timer.NewTicker(1, function()
+  		if C_ToyBox.GetNumToys() > 0 then
+  			GetLearnedStones()
+  			if RHTInitialized then
+  				SetRandomHearthToy()
+  				--print "RHT initialized" -- uncomment for debugging future versions
+  				ticker:Cancel()
+  			end
+  		end
+    end)
 end)
 
 frame:RegisterEvent("PLAYER_ENTERING_WORLD")
@@ -113,22 +107,15 @@ function SetRandomHearthToy()
 end
 
 -- Get stones learned and usable by character
-local ToyCollSetting
-local ToyUnCollSetting
-local ToyUsableSetting
 function GetLearnedStones()
 	-- Get the current setting for the toybox so we can set it back after we're done.
-	if not (ToyCollSetting and ToyUnCollSetting and ToyUsableSetting) then
-        ToyCollSetting = C_ToyBox.GetCollectedShown()
-        ToyUnCollSetting = C_ToyBox.GetUncollectedShown()
-        ToyUsableSetting = C_ToyBox.GetUnusableShown()
-    end
+    local ToyCollSetting = C_ToyBox.GetCollectedShown()
+    local ToyUnCollSetting = C_ToyBox.GetUncollectedShown()
+    local ToyUsableSetting = C_ToyBox.GetUnusableShown()
 	
 	C_ToyBox.SetCollectedShown(true) -- List collected toys
 	C_ToyBox.SetUncollectedShown(false) -- Don't list uncollected toys
 	C_ToyBox.SetUnusableShown(false) -- Don't list unusable toys in the the collection.
-    
-    	
 	
 	-- Go through all the toys to find the usable stons.
 	for i = 1, C_ToyBox.GetNumFilteredToys() do
@@ -140,14 +127,11 @@ function GetLearnedStones()
 		end
 	end
 	
-	if next(UsableHearthToyIndex) then
-        -- Reset the toybox filter
-    	C_ToyBox.SetCollectedShown(ToyCollSetting)
-    	C_ToyBox.SetUncollectedShown(ToyUnCollSetting)
-    	C_ToyBox.SetUnusableShown(ToyUsableSetting)
-        ToyCollSetting = nil
-        ToyUnCollSetting = nil
-        ToyUsableSetting = nil
+	-- Reset the toybox filter
+    C_ToyBox.SetCollectedShown(ToyCollSetting)
+    C_ToyBox.SetUncollectedShown(ToyUnCollSetting)
+    C_ToyBox.SetUnusableShown(ToyUsableSetting)
+    if next(UsableHearthToyIndex) then
 		RHTInitialized = true
 	end
 end
