@@ -79,8 +79,8 @@ AllHearthToyIndex[193588] = 375357 --Timewalker's Hearthstone
 AllHearthToyIndex[190196] = 366945 --Enlightened Hearthstone
 AllHearthToyIndex[200630] = 391042 --Ohn'ir Windsage's Hearthstone
 AllHearthToyIndex[206195] = 412555 --Path of the Naaru
-
-
+AllHearthToyIndex[209035] = 422284 --Hearthstone of the Flame
+AllHearthToyIndex[208704] = 420418 --Deepdweller's Earthen Hearthstone
 
 -- This is the meat right here.
 function SetRandomHearthToy()
