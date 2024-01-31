@@ -1,3 +1,4 @@
+RandomHearthToySettings = RandomHearthToySettings or {}
 -- To use random hearthstone toys gathered through world events.
 
 local AllHearthToyIndex = {} --All the toys
@@ -82,6 +83,28 @@ AllHearthToyIndex[206195] = 412555 --Path of the Naaru
 AllHearthToyIndex[209035] = 422284 --Hearthstone of the Flame
 AllHearthToyIndex[208704] = 420418 --Deepdweller's Earthen Hearthstone
 
+-- For each hearthstone, create a checkbox control
+for i, hearthstone in ipairs(AllHearthToyIndex) do
+	local checkbox = CreateFrame("CheckButton", "RandomHearthToyCheckbox" .. i, optionsPanel, "InterfaceOptionsCheckButtonTemplate")
+	checkbox:SetPoint("TOPLEFT", 16, -50 - (i - 1) * 30)
+	checkbox:SetScript("OnClick", function(self)
+		-- Update the SavedVariables table
+		RandomHearthToySettings[hearthstone] = self:GetChecked()
+	end)
+	checkboxes[hearthstone] = checkbox
+
+	local label = _G[checkbox:GetName() .. "Text"]
+	label:SetText(hearthstone)
+end
+
+-- Add a handler for the panel's OnShow event to update the checkboxes
+optionsPanel:SetScript("OnShow", function()
+	for hearthstone, checkbox in pairs(checkboxes) do
+		-- Update the checkboxes from the SavedVariables table
+		checkbox:SetChecked(RandomHearthToySettings[hearthstone])
+	end
+end)
+
 -- This is the meat right here.
 function SetRandomHearthToy()
 	-- Setting the new stone while in combat is bad.
@@ -118,12 +141,12 @@ function GetLearnedStones()
 	C_ToyBox.SetUncollectedShown(false) -- Don't list uncollected toys
 	C_ToyBox.SetUnusableShown(false) -- Don't list unusable toys in the the collection.
 	
-	-- Go through all the toys to find the usable stons.
+	-- Go through all the toys to find the usable stones.
 	for i = 1, C_ToyBox.GetNumFilteredToys() do
-		-- Go through all the stone to see if this toy is a stone.
-		for k in pairs(AllHearthToyIndex) do
-			if k == C_ToyBox.GetToyFromIndex(i) then
-				UsableHearthToyIndex [k] = 1
+		-- Go through all the checked hearthstones to see if this toy is a stone.
+		for k, checkbox in pairs(checkboxes) do
+			if checkbox:GetChecked() and k == C_ToyBox.GetToyFromIndex(i) then
+				UsableHearthToyIndex[k] = 1
 			end
 		end
 	end
