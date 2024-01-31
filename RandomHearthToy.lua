@@ -83,6 +83,42 @@ AllHearthToyIndex[206195] = 412555 --Path of the Naaru
 AllHearthToyIndex[209035] = 422284 --Hearthstone of the Flame
 AllHearthToyIndex[208704] = 420418 --Deepdweller's Earthen Hearthstone
 
+-- Create a panel for your addon's options
+local optionsPanel = CreateFrame("Frame", "RandomHearthToyOptionsPanel")
+optionsPanel.name = "RandomHearthToy"
+
+-- Register the panel with the Interface Options
+InterfaceOptions_AddCategory(optionsPanel)
+
+-- Create a title for the panel
+local title = optionsPanel:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
+title:SetPoint("TOPLEFT", 16, -16)
+title:SetText("RandomHearthToy Options")
+
+local checkboxes = {}
+
+-- For each hearthstone, create a checkbox control
+for i, hearthstone in ipairs(AllHearthToyIndex) do
+	local checkbox = CreateFrame("CheckButton", "RandomHearthToyCheckbox" .. i, optionsPanel, "InterfaceOptionsCheckButtonTemplate")
+	checkbox:SetPoint("TOPLEFT", 16, -50 - (i - 1) * 30)
+	checkbox:SetScript("OnClick", function(self)
+		-- Update the SavedVariables table
+		RandomHearthToySettings[hearthstone] = self:GetChecked()
+	end)
+	checkboxes[hearthstone] = checkbox
+
+	local label = _G[checkbox:GetName() .. "Text"]
+	label:SetText(hearthstone)
+end
+
+-- Add a handler for the panel's OnShow event to update the checkboxes
+optionsPanel:SetScript("OnShow", function()
+	for hearthstone, checkbox in pairs(checkboxes) do
+		-- Update the checkboxes from the SavedVariables table
+		checkbox:SetChecked(RandomHearthToySettings[hearthstone])
+	end
+end)
+
 -- For each hearthstone, create a checkbox control
 for i, hearthstone in ipairs(AllHearthToyIndex) do
 	local checkbox = CreateFrame("CheckButton", "RandomHearthToyCheckbox" .. i, optionsPanel, "InterfaceOptionsCheckButtonTemplate")
