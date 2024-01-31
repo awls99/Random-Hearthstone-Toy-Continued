@@ -98,9 +98,10 @@ title:SetText("RandomHearthToy Options")
 local checkboxes = {}
 
 -- For each hearthstone, create a checkbox control
-for i, hearthstone in ipairs(AllHearthToyIndex) do
+local spacing = 0
+for k, hearthstone in pairs(AllHearthToyIndex) do
 	local checkbox = CreateFrame("CheckButton", "RandomHearthToyCheckbox" .. i, optionsPanel, "InterfaceOptionsCheckButtonTemplate")
-	checkbox:SetPoint("TOPLEFT", 16, -50 - (i - 1) * 30)
+	checkbox:SetPoint("TOPLEFT", 16, -50 - (spacing - 1) * 30)
 	checkbox:SetScript("OnClick", function(self)
 		-- Update the SavedVariables table
 		RandomHearthToySettings[hearthstone] = self:GetChecked()
@@ -109,28 +110,7 @@ for i, hearthstone in ipairs(AllHearthToyIndex) do
 
 	local label = _G[checkbox:GetName() .. "Text"]
 	label:SetText(hearthstone)
-end
-
--- Add a handler for the panel's OnShow event to update the checkboxes
-optionsPanel:SetScript("OnShow", function()
-	for hearthstone, checkbox in pairs(checkboxes) do
-		-- Update the checkboxes from the SavedVariables table
-		checkbox:SetChecked(RandomHearthToySettings[hearthstone])
-	end
-end)
-
--- For each hearthstone, create a checkbox control
-for i, hearthstone in ipairs(AllHearthToyIndex) do
-	local checkbox = CreateFrame("CheckButton", "RandomHearthToyCheckbox" .. i, optionsPanel, "InterfaceOptionsCheckButtonTemplate")
-	checkbox:SetPoint("TOPLEFT", 16, -50 - (i - 1) * 30)
-	checkbox:SetScript("OnClick", function(self)
-		-- Update the SavedVariables table
-		RandomHearthToySettings[hearthstone] = self:GetChecked()
-	end)
-	checkboxes[hearthstone] = checkbox
-
-	local label = _G[checkbox:GetName() .. "Text"]
-	label:SetText(hearthstone)
+	spacing = spacing + 1
 end
 
 -- Add a handler for the panel's OnShow event to update the checkboxes
