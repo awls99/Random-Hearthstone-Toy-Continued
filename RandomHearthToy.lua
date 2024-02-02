@@ -103,11 +103,11 @@ C_Timer.After(timeOut, function()
     local ticker
     ticker = C_Timer.NewTicker(1, function()
   		if C_ToyBox.GetNumToys() > 0 then
-			registerOptions()
-  			GetLearnedStones()
-  			if RHTInitialized then
+			GetLearnedStones()
+			if RHTInitialized then
+				registerOptions()
   				SetRandomHearthToy()
-  				print "RHT initialized" -- uncomment for debugging future versions
+  				--print "RHT initialized" -- uncomment for debugging future versions
   				ticker:Cancel()
   			end
   		end
@@ -115,12 +115,12 @@ C_Timer.After(timeOut, function()
 end)
 
 frame:RegisterEvent("PLAYER_ENTERING_WORLD")
-
+frame:RegisterEvent("LOADING_SCREEN_DISABLED")
 -- Spellcast stopping is the check for if a hearthstone has been used.
 frame:RegisterEvent("UNIT_SPELLCAST_STOP")
 
 local function Event(self, event, arg1, arg2, arg3)
-	if event == "PLAYER_ENTERING_WORLD" then
+	if event == "PLAYER_ENTERING_WORLD" or event == "LOADING_SCREEN_DISABLED" then
 		if RHTInitialized then
 			SetRandomHearthToy()
 		else
@@ -146,7 +146,7 @@ end
 
 -- This is the meat right here.
 function SetRandomHearthToy()
-	debugOptions()
+	--debugOptions()
 	-- Setting the new stone while in combat is bad.
 	if not InCombatLockdown() then
 		-- Find the macro.
