@@ -1,5 +1,37 @@
-RandomHearthToySettings = RandomHearthToySettings or {}
--- To use random hearthstone toys gathered through world events.
+-- Ensure Ace3 is loaded
+local AceAddon = LibStub("AceAddon-3.0")
+local AceConfig = LibStub("AceConfig-3.0")
+local AceConfigDialog = LibStub("AceConfigDialog-3.0")
+
+-- Define your addon
+local RandomHearthToy = AceAddon:NewAddon("RandomHearthToy", "AceConsole-3.0")
+
+local function registerOptions()
+	-- Define your options table
+	local options = {
+		name = "RandomHearthToy Options",
+		type = "group",
+		args = {}
+	}
+
+	-- For each hearthstone, create an option
+	for k, hearthstone in pairs(AllHearthToyIndex) do
+		options.args["hearthstone" .. k] = {
+				type = "toggle",
+				name = tostring(hearthstone),
+				desc = "Toggle " .. tostring(hearthstone),
+				get = function() return RandomHearthToySettings[hearthstone] end,
+				set = function(_, value) RandomHearthToySettings[hearthstone] = value end,
+		}
+	end
+
+	-- Register your options table with AceConfig
+	AceConfig:RegisterOptionsTable("RandomHearthToy", options)
+
+	-- Add the options table to the Blizzard Interface Options
+	AceConfigDialog:AddToBlizOptions("RandomHearthToy", "RandomHearthToy")
+
+end
 
 local AllHearthToyIndex = {} --All the toys
 local UsableHearthToyIndex = {} --Usable toys
@@ -30,6 +62,7 @@ C_Timer.After(timeOut, function()
   		if C_ToyBox.GetNumToys() > 0 then
   			GetLearnedStones()
   			if RHTInitialized then
+					registerOptions()
   				SetRandomHearthToy()
   				--print "RHT initialized" -- uncomment for debugging future versions
   				ticker:Cancel()
@@ -45,8 +78,11 @@ frame:RegisterEvent("UNIT_SPELLCAST_STOP")
 
 local function Event(self, event, arg1, arg2, arg3)
 	if event == "PLAYER_ENTERING_WORLD" then
-		GetMacroIndex()
-		frame:UnregisterEvent("PLAYER_ENTERING_WORLD")
+		if RHTInitialized then
+			SetRandomHearthToy()
+		else
+			GetMacroIndex()
+		end
 	end
 	-- When a spell cast stops and it's the player's spell, send the ID to check if it's a stone.
 	if event == "UNIT_SPELLCAST_STOP" and arg1 == "player" then
@@ -83,43 +119,6 @@ AllHearthToyIndex[206195] = 412555 --Path of the Naaru
 AllHearthToyIndex[209035] = 422284 --Hearthstone of the Flame
 AllHearthToyIndex[208704] = 420418 --Deepdweller's Earthen Hearthstone
 
--- Create a panel for your addon's options
-local optionsPanel = CreateFrame("Frame", "RandomHearthToyOptionsPanel")
-optionsPanel.name = "RandomHearthToy"
-
--- Register the panel with the Interface Options
-InterfaceOptions_AddCategory(optionsPanel)
-
--- Create a title for the panel
-local title = optionsPanel:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
-title:SetPoint("TOPLEFT", 16, -16)
-title:SetText("RandomHearthToy Options")
-
-local checkboxes = {}
-
--- For each hearthstone, create a checkbox control
-local spacing = 0
-for k, hearthstone in pairs(AllHearthToyIndex) do
-	local checkbox = CreateFrame("CheckButton", "RandomHearthToyCheckbox" .. i, optionsPanel, "InterfaceOptionsCheckButtonTemplate")
-	checkbox:SetPoint("TOPLEFT", 16, -50 - (spacing - 1) * 30)
-	checkbox:SetScript("OnClick", function(self)
-		-- Update the SavedVariables table
-		RandomHearthToySettings[hearthstone] = self:GetChecked()
-	end)
-	checkboxes[hearthstone] = checkbox
-
-	local label = _G[checkbox:GetName() .. "Text"]
-	label:SetText(hearthstone)
-	spacing = spacing + 1
-end
-
--- Add a handler for the panel's OnShow event to update the checkboxes
-optionsPanel:SetScript("OnShow", function()
-	for hearthstone, checkbox in pairs(checkboxes) do
-		-- Update the checkboxes from the SavedVariables table
-		checkbox:SetChecked(RandomHearthToySettings[hearthstone])
-	end
-end)
 
 -- This is the meat right here.
 function SetRandomHearthToy()
@@ -160,8 +159,8 @@ function GetLearnedStones()
 	-- Go through all the toys to find the usable stones.
 	for i = 1, C_ToyBox.GetNumFilteredToys() do
 		-- Go through all the checked hearthstones to see if this toy is a stone.
-		for k, checkbox in pairs(checkboxes) do
-			if checkbox:GetChecked() and k == C_ToyBox.GetToyFromIndex(i) then
+		for k, enabled in pairs(RandomHearthToySettings) do
+			if enabled and k == C_ToyBox.GetToyFromIndex(i) then
 				UsableHearthToyIndex[k] = 1
 			end
 		end
