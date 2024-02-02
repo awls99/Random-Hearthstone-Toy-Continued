@@ -2,6 +2,7 @@
 local AceAddon = LibStub("AceAddon-3.0")
 local AceConfig = LibStub("AceConfig-3.0")
 local AceConfigDialog = LibStub("AceConfigDialog-3.0")
+local RandomHearthToySettings = {} --Settings for the addon
 
 -- Define your addon
 local RandomHearthToy = AceAddon:NewAddon("RandomHearthToy", "AceConsole-3.0")
