@@ -1,6 +1,8 @@
 ## Interface: 100205
 ## Title: Random Hearth Toy Continued
 ## Author: awls99
-## Version: 1.2.6
+## Version: 2.0.0
+
+## SavedVariables: RandomHearthToyDB
 
 RandomHearthToy.lua
