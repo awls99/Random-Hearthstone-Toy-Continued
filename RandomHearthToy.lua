@@ -41,7 +41,6 @@ local function InitializeDB()
 		defaults.profile[key] = true
 	end
 	RandomHearthToySettings = LibStub("AceDB-3.0"):New("RandomHearthToyDB", defaults, true)
-	DevTools_Dump({ RandomHearthToySettings });
 end
 
 
