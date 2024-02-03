@@ -135,9 +135,11 @@ end
 frame:SetScript("OnEvent", Event)
 
 function removeUnwantedStones()
-	for k, v in pairs(RandomHearthToySettings.profile) do
-		if not v then
-			RemoveStone(k)
+	if RandomHearthToySettings.profile then
+		for k, v in pairs(RandomHearthToySettings.profile) do
+			if not v then
+				RemoveStone(k)
+			end
 		end
 	end
 end
