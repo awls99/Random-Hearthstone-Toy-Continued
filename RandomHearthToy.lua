@@ -25,6 +25,8 @@ AllHearthToyIndex[200630] = { spellId = 391042, name = "Ohn'ir Windsage's Hearth
 AllHearthToyIndex[206195] = { spellId = 412555, name = "Path of the Naaru" }
 AllHearthToyIndex[209035] = { spellId = 422284, name = "Hearthstone of the Flame" }
 AllHearthToyIndex[208704] = { spellId = 420418, name = "Deepdweller's Earthen Hearthstone" }
+AllHearthToyIndex[212337] = { spellId = 431644, name = "Stone of the Hearth" }
+
 
 -- Ensure Ace3 is loaded
 local AceAddon = LibStub("AceAddon-3.0")
