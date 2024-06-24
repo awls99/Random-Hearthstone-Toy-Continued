@@ -27,7 +27,8 @@ AllHearthToyIndex[209035] = { spellId = 422284, name = "Hearthstone of the Flame
 AllHearthToyIndex[208704] = { spellId = 420418, name = "Deepdweller's Earthen Hearthstone" }
 AllHearthToyIndex[212337] = { spellId = 401802, name = "Stone of the Hearth" }
 AllHearthToyIndex[212337] = { spellId = 431644, name = "Stone of the Hearth" }
-AllHearthToyIndex[210455] = { spellId = 438606, name = "Draenic Hologem" }
+-- got a bug report that this HS gets stuck if character os not Draenei, disabling for now
+-- AllHearthToyIndex[210455] = { spellId = 438606, name = "Draenic Hologem" }
 
 
 
