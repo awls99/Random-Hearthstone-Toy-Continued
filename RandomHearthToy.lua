@@ -1,22 +1,22 @@
 local AllHearthToyIndex = {} --All the toys
 -- Generate list of stones in game.
-AllHearthToyIndex[166747] = { spellId = 286353, name = "Brewfest" }
-AllHearthToyIndex[165802] = { spellId = 286031, name = "Noble" }
-AllHearthToyIndex[165670] = { spellId = 285424, name = "Peddlefeet" }
-AllHearthToyIndex[165669] = { spellId = 285362, name = "Lunar" }
-AllHearthToyIndex[166746] = { spellId = 286331, name = "Fire Eater" }
-AllHearthToyIndex[163045] = { spellId = 278559, name = "Horseman" }
-AllHearthToyIndex[162973] = { spellId = 278244, name = "Greatfather" }
-AllHearthToyIndex[142542] = { spellId = 231504, name = "Tome of TP" }
-AllHearthToyIndex[64488]  = { spellId = 94719,  name = "Innkeeper" }
-AllHearthToyIndex[54452]  = { spellId = 75136,  name = "Ethereal" }
+AllHearthToyIndex[166747] = { spellId = 286353, name = "Brewfest Reveler's Hearthstone" }
+AllHearthToyIndex[165802] = { spellId = 286031, name = "Noble Gardener's Hearthstone" }
+AllHearthToyIndex[165670] = { spellId = 285424, name = "Peddlefeet's Lovely Hearthstone" }
+AllHearthToyIndex[165669] = { spellId = 285362, name = "Lunar Elder's Hearthstone" }
+AllHearthToyIndex[166746] = { spellId = 286331, name = "Fire Eater's Hearthstone" }
+AllHearthToyIndex[163045] = { spellId = 278559, name = "Headless Horseman's Hearthstone" }
+AllHearthToyIndex[162973] = { spellId = 278244, name = "Greatfather Winter's Hearthstone" }
+AllHearthToyIndex[142542] = { spellId = 231504, name = "Tome of Town Portal" }
+AllHearthToyIndex[64488]  = { spellId = 94719,  name = "The Innkeeper's Daughter" }
+AllHearthToyIndex[54452]  = { spellId = 75136,  name = "Ethereal Portal" }
 AllHearthToyIndex[93672]  = { spellId = 136508, name = "Dark Portal" }
 AllHearthToyIndex[168907] = { spellId = 298068, name = "Holographic Digitalization" }
-AllHearthToyIndex[172179] = { spellId = 308742, name = "Eternal Traveler" }
-AllHearthToyIndex[182773] = { spellId = 340200, name = "Necrolord" }
-AllHearthToyIndex[180290] = { spellId = 326064, name = "Night Fae" }
-AllHearthToyIndex[184353] = { spellId = 345393, name = "Kyrian" }
-AllHearthToyIndex[183716] = { spellId = 342122, name = "Venthyr" }
+AllHearthToyIndex[172179] = { spellId = 308742, name = "Eternal Traveler's Hearthstone" }
+AllHearthToyIndex[182773] = { spellId = 340200, name = "Necrolord Hearthstone" }
+AllHearthToyIndex[180290] = { spellId = 326064, name = "Night Fae Hearthstone" }
+AllHearthToyIndex[184353] = { spellId = 345393, name = "Kyrian Hearthstone" }
+AllHearthToyIndex[183716] = { spellId = 342122, name = "Venthyr Sinstone" }
 AllHearthToyIndex[188952] = { spellId = 363799, name = "Dominated Hearthstone" }
 AllHearthToyIndex[190237] = { spellId = 367013, name = "Broker Translocation Matrix" }
 AllHearthToyIndex[193588] = { spellId = 375357, name = "Timewalker's Hearthstone" }
@@ -26,19 +26,16 @@ AllHearthToyIndex[206195] = { spellId = 412555, name = "Path of the Naaru" }
 AllHearthToyIndex[209035] = { spellId = 422284, name = "Hearthstone of the Flame" }
 AllHearthToyIndex[208704] = { spellId = 420418, name = "Deepdweller's Earthen Hearthstone" }
 AllHearthToyIndex[212337] = { spellId = 401802, name = "Stone of the Hearth" }
-AllHearthToyIndex[212337] = { spellId = 431644, name = "Stone of the Hearth" }
+--AllHearthToyIndex[212337] = { spellId = 431644, name = "Stone of the Hearth" }
 AllHearthToyIndex[228940] = { spellId = 463481, name = "Notorious Thread's Hearthstone" }
 -- got a bug report that this HS gets stuck if character os not Draenei, disabling for now
 -- AllHearthToyIndex[210455] = { spellId = 438606, name = "Draenic Hologem" }
-
-
 
 -- Ensure Ace3 is loaded
 local AceAddon = LibStub("AceAddon-3.0")
 local AceConfig = LibStub("AceConfig-3.0")
 local AceConfigDialog = LibStub("AceConfigDialog-3.0")
 RandomHearthToySettings = {} --Settings for the addon
-
 
 local function InitializeDB()
 	local defaults = {
@@ -49,7 +46,6 @@ local function InitializeDB()
 	end
 	RandomHearthToySettings = LibStub("AceDB-3.0"):New("RandomHearthToyDB", defaults, true)
 end
-
 
 -- Define your addon
 local RandomHearthToy = AceAddon:NewAddon("RandomHearthToy", "AceConsole-3.0")
@@ -62,7 +58,6 @@ local function registerOptions()
 		type = "group",
 		args = {}
 	}
-
 	-- For each hearthstone, create an option
 	for k, hearthstone in pairs(AllHearthToyIndex) do
 		options.args["hearthstone" .. k] = {
@@ -73,15 +68,12 @@ local function registerOptions()
 				set = function(_, value) RandomHearthToySettings.profile[k] = value end,
 		}
 	end
-
 	-- Register your options table with AceConfig
 	AceConfig:RegisterOptionsTable("RandomHearthToy", options)
 
 	-- Add the options table to the Blizzard Interface Options
 	AceConfigDialog:AddToBlizOptions("RandomHearthToy", "RandomHearthToy")
-
 end
-
 
 local UsableHearthToyIndex = {} --Usable toys
 local RHTIndex = false --Macro index
@@ -106,18 +98,17 @@ RHT.b:SetAttribute("type","item")
 -- Setting up a frame to wait and see if the toybox is loaded before getting stones on login.
 local timeOut = 10 --Delay for checking stones.
 C_Timer.After(timeOut, function()
-    local ticker
-    ticker = C_Timer.NewTicker(1, function()
-  		if C_ToyBox.GetNumToys() > 0 then
+	local ticker
+	ticker = C_Timer.NewTicker(1, function()
+		if C_ToyBox.GetNumToys() > 0 then
 			GetLearnedStones()
 			if RHTInitialized then
+				SetRandomHearthToy()
 				registerOptions()
-  				SetRandomHearthToy()
-  				--print "RHT initialized" -- uncomment for debugging future versions
-  				ticker:Cancel()
-  			end
-  		end
-    end)
+				ticker:Cancel()
+			end
+		end
+	end)
 end)
 
 frame:RegisterEvent("PLAYER_ENTERING_WORLD")
@@ -151,7 +142,6 @@ function removeUnwantedStones()
 	end
 end
 
-
 -- This is the meat right here.
 function SetRandomHearthToy()
 	--debugOptions()
@@ -168,8 +158,9 @@ function SetRandomHearthToy()
 		end		
 		local itemID, toyName = ''
 		-- Randomly pick one.
-		local k = RandomKey(UsableHearthToyIndex)
-		local itemID, toyName = C_ToyBox.GetToyInfo(k)
+		local itemID = RandomKey(UsableHearthToyIndex)
+		local toyName = AllHearthToyIndex[itemID]["name"]
+	
 		if toyName then
 			-- Remove it from the list so we don't pick it again.
 			RemoveStone(k)
@@ -184,29 +175,13 @@ end
 -- Get stones learned and usable by character
 function GetLearnedStones()
 	-- Get the current setting for the toybox so we can set it back after we're done.
-    local ToyCollSetting = C_ToyBox.GetCollectedShown()
-    local ToyUnCollSetting = C_ToyBox.GetUncollectedShown()
-    local ToyUsableSetting = C_ToyBox.GetUnusableShown()
-	
-	C_ToyBox.SetCollectedShown(true) -- List collected toys
-	C_ToyBox.SetUncollectedShown(false) -- Don't list uncollected toys
-	C_ToyBox.SetUnusableShown(false) -- Don't list unusable toys in the the collection.
-	
-	-- Go through all the toys to find the usable stons.
-	for i = 1, C_ToyBox.GetNumFilteredToys() do
-		-- Go through all the stone to see if this toy is a stone.
-		for k in pairs(AllHearthToyIndex) do
-			if k == C_ToyBox.GetToyFromIndex(i) then
-				UsableHearthToyIndex [k] = 1
-			end
+	for k in pairs(AllHearthToyIndex) do
+		if PlayerHasToy(k) then
+			UsableHearthToyIndex[k] = 1
 		end
 	end
-	
-	-- Reset the toybox filter
-    C_ToyBox.SetCollectedShown(ToyCollSetting)
-    C_ToyBox.SetUncollectedShown(ToyUnCollSetting)
-    C_ToyBox.SetUnusableShown(ToyUsableSetting)
-    if next(UsableHearthToyIndex) then
+	if next(UsableHearthToyIndex) then
+		--print "Random Hearthstone Toy: Stones loaded"
 		RHTInitialized = true
 	end
 end
@@ -258,7 +233,9 @@ end
 
 -- Remove stone from the list so we don't use it again. (Here for debugging)
 function RemoveStone(k)
-	UsableHearthToyIndex[k] = nil
+	if(UsableHearthToyIndex[k]) then
+		UsableHearthToyIndex[k] = nil
+	end
 end
 
 -- Did a stone get used?
@@ -273,17 +250,15 @@ function SpellcastUpdate(spellID)
 	end
 end
 
-
-
 -- Code to randomly pick a key from a table.
 function RandomKey(t)
-    local keys = {}
-    for key, value in pairs(t) do
-        keys[#keys+1] = key --Store keys in another table.
-    end
-    if (not #keys) or (#keys < 1) then return 0 end
-    index = keys[math.random(1, #keys)]
-    return index
+	local keys = {}
+	for key, value in pairs(t) do
+		keys[#keys+1] = key --Store keys in another table.
+	end
+	if (not #keys) or (#keys < 1) then return 0 end
+	index = keys[math.random(1, #keys)]
+	return index
 end
 
 function debugOptions()
