@@ -11,7 +11,7 @@ AllHearthToyIndex[142542] = { spellId = 231504, name = "Tome of Town Portal" }
 AllHearthToyIndex[64488]  = { spellId = 94719,  name = "The Innkeeper's Daughter" }
 AllHearthToyIndex[54452]  = { spellId = 75136,  name = "Ethereal Portal" }
 AllHearthToyIndex[93672]  = { spellId = 136508, name = "Dark Portal" }
-AllHearthToyIndex[168907] = { spellId = 298068, name = "Holographic Digitalization" }
+AllHearthToyIndex[168907] = { spellId = 298068, name = "Holographic Digitalization Hearthstone" }
 AllHearthToyIndex[172179] = { spellId = 308742, name = "Eternal Traveler's Hearthstone" }
 AllHearthToyIndex[182773] = { spellId = 340200, name = "Necrolord Hearthstone" }
 AllHearthToyIndex[180290] = { spellId = 326064, name = "Night Fae Hearthstone" }
