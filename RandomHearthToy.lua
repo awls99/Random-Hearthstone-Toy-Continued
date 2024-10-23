@@ -167,7 +167,7 @@ function SetRandomHearthToy()
 			-- Write the macro.
 			GenMacro(itemID, toyName)
 			-- Set button for first use
-			if not RHT.b:GetAttribute("item") then RHT.b:SetAttribute("item",toyName) end
+			-- if not RHT.b:GetAttribute("item") then RHT.b:SetAttribute("item",toyName) end
 		end
 	end
 end
@@ -223,10 +223,10 @@ end
 function GenMacro(itemID, toyName)
 	-- Did we find the index?  If so, edit that. The macro changes the button to the next stone, but only if we aren't in combat; can't SetAttribute. It then "clicks" the RHTB button
 	if RHTIndex then
-		EditMacro(RHTIndex, " ", "INV_MISC_QUESTIONMARK", "#showtooltip item:" .. itemID .. "\r#macro version " .. macroVersion .. "\r/run if not InCombatLockdown() then RHT.b:SetAttribute(\"item\",\"" .. toyName .. "\") end\r/click RHTB LeftButton" .. (needsOne == "1" and " 1" or ""))
+		EditMacro(RHTIndex, " ", "INV_MISC_QUESTIONMARK", "#showtooltip item:" .. itemID .. "\r#macro version " .. macroVersion .. "\r#RHT.b\r/use " .. toyName .. "\r/click RHTB LeftButton" .. (needsOne == "1" and " 1" or ""))
 	else
 		-- No macro found, make a new one, get it's ID, then set the toy on the invisble button. This one is named so people can find it on first use.
-		CreateMacro("RHT", "INV_MISC_QUESTIONMARK", "#showtooltip item:" .. itemID .. "\r#macro version " .. macroVersion .. "\r/run if not InCombatLockdown() then RHT.b:SetAttribute(\"item\",\"" .. toyName .. "\") end\r/click RHTB LeftButton" .. (needsOne == "1" and " 1" or ""))
+		CreateMacro("RHT", "INV_MISC_QUESTIONMARK", "#showtooltip item:" .. itemID .. "\r#macro version " .. macroVersion .. "\r#RHT.b\r/use " .. toyName .. "\r/click RHTB LeftButton" .. (needsOne == "1" and " 1" or ""))
 		GetMacroIndex()
 	end
 end
