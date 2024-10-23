@@ -1,7 +1,7 @@
-## Interface: 110002
+## Interface: 110005
 ## Title: Random Hearth Toy Continued
 ## Author: awls99
-## Version: 3.0.1
+## Version: 3.0.2
 ## OptionalDeps: Ace3, LibStub
 
 ## SavedVariables: RandomHearthToyDB
