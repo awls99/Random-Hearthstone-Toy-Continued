@@ -167,7 +167,7 @@ function SetRandomHearthToy()
 			-- Write the macro.
 			GenMacro(itemID, toyName)
 			-- Set button for first use
-			if not RHT.b:GetAttribute("item") then RHT.b:SetAttribute("item",toyName) end
+			-- if not RHT.b:GetAttribute("item") then RHT.b:SetAttribute("item",toyName) end
 		end
 	end
 end
