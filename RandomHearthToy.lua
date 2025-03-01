@@ -1,35 +1,21 @@
-local AllHearthToyIndex = {} --All the toys
--- Generate list of stones in game.
-AllHearthToyIndex[166747] = { spellId = 286353, name = "Brewfest Reveler's Hearthstone" }
-AllHearthToyIndex[165802] = { spellId = 286031, name = "Noble Gardener's Hearthstone" }
-AllHearthToyIndex[165670] = { spellId = 285424, name = "Peddlefeet's Lovely Hearthstone" }
-AllHearthToyIndex[165669] = { spellId = 285362, name = "Lunar Elder's Hearthstone" }
-AllHearthToyIndex[166746] = { spellId = 286331, name = "Fire Eater's Hearthstone" }
-AllHearthToyIndex[163045] = { spellId = 278559, name = "Headless Horseman's Hearthstone" }
-AllHearthToyIndex[162973] = { spellId = 278244, name = "Greatfather Winter's Hearthstone" }
-AllHearthToyIndex[142542] = { spellId = 231504, name = "Tome of Town Portal" }
-AllHearthToyIndex[64488]  = { spellId = 94719,  name = "The Innkeeper's Daughter" }
-AllHearthToyIndex[54452]  = { spellId = 75136,  name = "Ethereal Portal" }
-AllHearthToyIndex[93672]  = { spellId = 136508, name = "Dark Portal" }
-AllHearthToyIndex[168907] = { spellId = 298068, name = "Holographic Digitalization Hearthstone" }
-AllHearthToyIndex[172179] = { spellId = 308742, name = "Eternal Traveler's Hearthstone" }
-AllHearthToyIndex[182773] = { spellId = 340200, name = "Necrolord Hearthstone" }
-AllHearthToyIndex[180290] = { spellId = 326064, name = "Night Fae Hearthstone" }
-AllHearthToyIndex[184353] = { spellId = 345393, name = "Kyrian Hearthstone" }
-AllHearthToyIndex[183716] = { spellId = 342122, name = "Venthyr Sinstone" }
-AllHearthToyIndex[188952] = { spellId = 363799, name = "Dominated Hearthstone" }
-AllHearthToyIndex[190237] = { spellId = 367013, name = "Broker Translocation Matrix" }
-AllHearthToyIndex[193588] = { spellId = 375357, name = "Timewalker's Hearthstone" }
-AllHearthToyIndex[190196] = { spellId = 366945, name = "Enlightened Hearthstone" }
-AllHearthToyIndex[200630] = { spellId = 391042, name = "Ohn'ir Windsage's Hearthstone" }
-AllHearthToyIndex[206195] = { spellId = 412555, name = "Path of the Naaru" }
-AllHearthToyIndex[209035] = { spellId = 422284, name = "Hearthstone of the Flame" }
-AllHearthToyIndex[208704] = { spellId = 420418, name = "Deepdweller's Earthen Hearthstone" }
-AllHearthToyIndex[212337] = { spellId = 401802, name = "Stone of the Hearth" }
---AllHearthToyIndex[212337] = { spellId = 431644, name = "Stone of the Hearth" }
-AllHearthToyIndex[228940] = { spellId = 463481, name = "Notorious Thread's Hearthstone" }
--- got a bug report that this HS gets stuck if character os not Draenei, disabling for now
--- AllHearthToyIndex[210455] = { spellId = 438606, name = "Draenic Hologem" }
+local locale = GetLocale()
+local Locales = AllHearthToyIndex.Locales
+
+-- Define fallback order (e.g., esMX -> esES -> enUS)
+local activeLocale
+if locale == "esMX" or locale == "esES" then
+    activeLocale = Locales.esES or Locales.enUS
+elseif locale == "deDE" then
+    activeLocale = Locales.deDE or Locales.enUS
+elseif locale == "frFR" then
+    activeLocale = Locales.frFR or Locales.enUS
+else
+    activeLocale = Locales.enUS -- Default to English
+end
+
+
+-- Assign the returned table to your addon's variable
+local AllHearthToyIndex = activeLocale
 
 -- Ensure Ace3 is loaded
 local AceAddon = LibStub("AceAddon-3.0")
