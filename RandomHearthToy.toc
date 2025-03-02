@@ -11,5 +11,6 @@ AllHearthToyIndex_en.lua
 AllHearthToyIndex_es.lua
 AllHearthToyIndex_de.lua
 AllHearthToyIndex_fr.lua
+AllHearthToyIndex_cn.lua
 RandomHearthToy.lua
 
