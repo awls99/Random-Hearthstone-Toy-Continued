@@ -26,8 +26,8 @@ AllHearthToyIndex.Locales.deDE = {
   [209035] = { spellId = 422284, name = "Ruhestein der Flamme"},
   [208704] = { spellId = 420418, name = "Irdener Ruhestein des Tiefenbewohners"},
   [212337] = { spellId = 401802, name = "Ruhestein"},
-  [228940] = { spellId = 463481, name = "Ruhestein des berüchtigten Faden"}
-  [236687] = { spellId = 1220729, name = "Explosive Hearthstone"}
+  [228940] = { spellId = 463481, name = "Ruhestein des berüchtigten Faden"},
+  [236687] = { spellId = 1220729, name = "Explosive Hearthstone"},
 -- got a bug report that this HS gets stuck if character os not Draenei, disabling for now
 -- AllHearthToyIndex[210455] = { spellId = 438606, name = "Draenischer Holostein"}
 }
