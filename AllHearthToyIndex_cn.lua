@@ -26,7 +26,7 @@ AllHearthToyIndex.Locales.zhCN = {
   [209035] = { spellId = 422284, name = "烈焰炉石"},
   [208704] = { spellId = 420418, name = "幽邃住民的土灵炉石"},
   [212337] = { spellId = 401802, name = "炉之石"},
-  [228940] = { spellId = 463481, name = "恶名丝线炉石"}
+  [228940] = { spellId = 463481, name = "恶名丝线炉石"},
   [236687] = { spellId = 1220729, name = "高爆炉石"}
 -- got a bug report that this HS gets stuck if character os not Draenei, disabling for now
 -- AllHearthToyIndex[210455] = { spellId = 438606, name = "德莱尼全息宝石"}
