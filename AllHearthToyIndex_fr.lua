@@ -26,5 +26,6 @@ AllHearthToyIndex.Locales.frFR = {
   [209035] = { spellId = 422284, name = "Pierre de foyer de la Flamme" },
   [208704] = { spellId = 420418, name = "Pierre de foyer en terre de rôdeur des profondeurs" },
   [212337] = { spellId = 401802, name = "Pierre du foyer" },
-  [228940] = { spellId = 463481, name = "Pierre de foyer de fil notoire" }
+  [228940] = { spellId = 463481, name = "Pierre de foyer de fil notoire" },
+  [236687] = { spellId = 1220729, name = "Pierre de foyer explosive"}
 }
