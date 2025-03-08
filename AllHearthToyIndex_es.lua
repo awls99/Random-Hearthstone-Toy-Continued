@@ -26,5 +26,6 @@ AllHearthToyIndex.Locales.esES = {
   [209035] = { spellId = 422284, name = "Piedra de hogar de la Llama"},
   [208704] = { spellId = 420418, name = "Piedra de hogar terránea de habitante las profundidades"},
   [212337] = { spellId = 401802, name = "Piedra del hogar"},
-  [228940] = { spellId = 463481, name = "Piedra de hogar de hilo infame"}
+  [228940] = { spellId = 463481, name = "Piedra de hogar de hilo infame"},
+  [236687] = { spellId = 1220729, name = "Explosive Hearthstone"}
 }
