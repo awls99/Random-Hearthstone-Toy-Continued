@@ -1,5 +1,5 @@
+AllHearthToyIndex.Locales = AllHearthToyIndex.Locales or {}
 AllHearthToyIndex.Locales.zhTW = {
-
   [166747] = { spellId = 286353, name = "啤酒節狂歡者的爐石"},
   [165802] = { spellId = 286031, name = "貴族園丁的爐石"},
   [165670] = { spellId = 285424, name = "傳播者充滿愛的爐石"},
