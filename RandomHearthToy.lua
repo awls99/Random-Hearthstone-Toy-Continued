@@ -6,11 +6,13 @@ local activeLocale
 if locale == "esMX" or locale == "esES" then
     activeLocale = Locales.esES or Locales.enUS
 elseif locale == "deDE" then
-    activeLocale = Locales.deDE or Locales.enUS
+	activeLocale = Locales.deDE or Locales.enUS
 elseif locale == "frFR" then
     activeLocale = Locales.frFR or Locales.enUS
 elseif locale == "zhCN" then
     activeLocale = Locales.zhCN or Locales.enUS
+elseif locale == "zhTW" then
+	activeLocale = Locales.zhTW or Locales.enUS
 elseif locale == "ruRU" then
     activeLocale = Locales.ruRU or Locales.enUS
 else
