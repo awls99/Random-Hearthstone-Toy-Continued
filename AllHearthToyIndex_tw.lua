@@ -13,7 +13,7 @@ AllHearthToyIndex.Locales.zhTW = {
   [93672]  = { spellId = 136508, name = "黑暗之門"},
   [168907] = { spellId = 298068, name = "全像數位化爐石"},
   [172179] = { spellId = 308742, name = "永恆旅人的爐石"},
-  [182773] = { spellId = 340200, name = "死靈領主的爐石"},
+  [182773] = { spellId = 340200, name = "死靈領主爐石"},
   [180290] = { spellId = 326064, name = "暗夜妖精的爐石"},
   [184353] = { spellId = 345393, name = "琪瑞安爐石"},
   [183716] = { spellId = 342122, name = "汎希爾罪孽石"},
