@@ -28,5 +28,5 @@ AllHearthToyIndex.Locales.frFR = {
   [212337] = { spellId = 401802, name = "Pierre du foyer" },
   [228940] = { spellId = 463481, name = "Pierre de foyer de fil notoire" },
   [236687] = { spellId = 1220729, name = "Pierre de foyer explosive"},
-  [235016] = { spellId = 1217281, name = "Module de redéploiement"}
+  [235016] = { spellId = 1217281, name = "Module de redéploiement"},
 }
