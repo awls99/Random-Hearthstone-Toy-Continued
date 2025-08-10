@@ -29,4 +29,5 @@ AllHearthToyIndex.Locales.frFR = {
   [228940] = { spellId = 463481, name = "Pierre de foyer de fil notoire" },
   [236687] = { spellId = 1220729, name = "Pierre de foyer explosive"},
   [235016] = { spellId = 1217281, name = "Module de redéploiement"},
+  [245970] = { spellId = 1240219, name = "Pierre de foyer expresse du maître de P.O.S.T.E."},
 }

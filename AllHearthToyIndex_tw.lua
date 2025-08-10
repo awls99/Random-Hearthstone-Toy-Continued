@@ -29,6 +29,7 @@ AllHearthToyIndex.Locales.zhTW = {
   [228940] = { spellId = 463481, name = "凶霸絲線爐石"},
   [236687] = { spellId = 1220729, name = "爆炸爐石"},
   [235016] = { spellId = 1217281, name = "再部署模組"},
+  [245970] = { spellId = 1240219, name = "郵務主管的瞬移爐石"},
 
   -- got a bug report that this HS gets stuck if character os not Draenei, disabling for now
   -- AllHearthToyIndex[210455] = { spellId = 438606, name = "德萊尼全像寶石"}

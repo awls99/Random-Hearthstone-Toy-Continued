@@ -30,6 +30,7 @@ AllHearthToyIndex.Locales.enUS = {
 	[228940] = { spellId = 463481, name = "Notorious Thread's Hearthstone" },
 	[236687] = { spellId = 1220729, name = "Explosive Hearthstone"},
 	[235016] = { spellId = 1217281, name = "Redeployment Module"},
+	[245970] = { spellId = 1240219, name = "P.O.S.T. Master's Express Hearthstone"},
 	-- got a bug report that this HS gets stuck if character os not Draenei, disabling for now
 	-- [210455] = { spellId = 438606, name = "Draenic Hologem" },
 }
