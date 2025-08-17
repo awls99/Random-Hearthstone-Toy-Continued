@@ -30,4 +30,5 @@ AllHearthToyIndex.Locales.esES = {
   [236687] = { spellId = 1220729, name = "Piedra de hogar explosiva"},
   [235016] = { spellId = 1217281, name = "Módulo de redespliegue"},
   [245970] = { spellId = 1240219, name = "Piedra de hogar exprés del jefe de correos"},
+  [246565] = { spellId = 1242509, name = "Piedra de hogar cósmica"},
 }
