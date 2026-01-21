@@ -31,6 +31,7 @@ AllHearthToyIndex.Locales.deDE = {
   [235016] = { spellId = 1217281, name = "Umverlegungsmodul"},
   [245970] = { spellId = 1240219, name = "Expressruhestein des P.O.S.T.-Meisters"},
   [246565] = { spellId = 1242509, name = "Kosmischer Ruhestein"},
+	[263489] = { spellId = 1270583, name = "Umhüllung der Naaru"},
 -- got a bug report that this HS gets stuck if character os not Draenei, disabling for now
 -- AllHearthToyIndex[210455] = { spellId = 438606, name = "Draenischer Holostein"}
 }

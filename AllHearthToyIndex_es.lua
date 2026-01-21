@@ -31,4 +31,5 @@ AllHearthToyIndex.Locales.esES = {
   [235016] = { spellId = 1217281, name = "Módulo de redespliegue"},
   [245970] = { spellId = 1240219, name = "Piedra de hogar exprés del jefe de correos"},
   [246565] = { spellId = 1242509, name = "Piedra de hogar cósmica"},
+	[263489] = { spellId = 1270583, name = "Envoltorio de Naaru"},
 }
