@@ -17,6 +17,8 @@ elseif locale == "ruRU" then
     activeLocale = Locales.ruRU or Locales.enUS
 elseif locale == "koKR" then
     activeLocale = Locales.koKR or Locales.enUS
+elseif locale == "ptBR" then
+    activeLocale = Locales.koKR or Locales.enUS
 else
     activeLocale = Locales.enUS -- Default to English
 end
