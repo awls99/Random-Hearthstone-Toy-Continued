@@ -34,6 +34,7 @@ AllHearthToyIndex.Locales.enUS = {
 	[246565] = { spellId = 1242509, name = "Cosmic Hearthstone"},
 	[263489] = { spellId = 1270583, name = "Naaru's Enfold"},
 	[263933] = { spellId = 1270814, name = "Preyseeker's Hearthstone"},
+	[257736] = { spellId = 1261979, name = "Lightcalled Hearthstone"},
 
 	-- got a bug report that this HS gets stuck if character os not Draenei, disabling for now
 	-- [210455] = { spellId = 438606, name = "Draenic Hologem" },
