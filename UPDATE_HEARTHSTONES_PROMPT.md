@@ -118,3 +118,4 @@ After updates are complete, the addon should:
 - Item IDs and spell IDs must be identical across all language files
 - Only the `name` field should differ between languages
 - Some items may be commented out due to bugs - respect these comments
+- Do NOT touch anything else, even if it looks wrong, the previously existing lists have no bugs.
