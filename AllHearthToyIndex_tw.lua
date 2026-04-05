@@ -32,6 +32,8 @@ AllHearthToyIndex.Locales.zhTW = {
   [245970] = { spellId = 1240219, name = "郵務主管的瞬移爐石"},
 	[246565] = { spellId = 1242509, name = "宇宙爐石"},
 	[263489] = { spellId = 1270583, name = "纳鲁的拥怀"},
+	[263933] = { spellId = 1270814, name = "尋獵者爐石"},
+	[257736] = { spellId = 1261979, name = "光喚爐石"},
   -- got a bug report that this HS gets stuck if character os not Draenei, disabling for now
   -- AllHearthToyIndex[210455] = { spellId = 438606, name = "德萊尼全像寶石"}
 
