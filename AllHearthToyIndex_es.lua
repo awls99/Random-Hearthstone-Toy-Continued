@@ -34,4 +34,5 @@ AllHearthToyIndex.Locales.esES = {
 	[263489] = { spellId = 1270583, name = "Envoltorio de Naaru"},
 	[263933] = { spellId = 1270814, name = "Piedra de hogar de buscapresas"},
 	[257736] = { spellId = 1261979, name = "Piedra de hogar de la Luz"},
+	[265100] = { spellId = 1273401, name = "Core warden's hearthstone"},
 }
