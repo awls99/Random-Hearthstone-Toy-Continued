@@ -1,9 +1,22 @@
-## Interface: 110005
+## Interface: 120001
 ## Title: Random Hearth Toy Continued
 ## Author: awls99
-## Version: 3.0.2
+## Version: 3.3.0
 ## OptionalDeps: Ace3, LibStub
 
 ## SavedVariables: RandomHearthToyDB
 
+embeds.xml
+
+vars.lua
+AllHearthToyIndex_en.lua
+AllHearthToyIndex_es.lua
+AllHearthToyIndex_de.lua
+AllHearthToyIndex_fr.lua
+AllHearthToyIndex_cn.lua
+AllHearthToyIndex_ru.lua
+AllHearthToyIndex_tw.lua
+AllHearthToyIndex_ko.lua
 RandomHearthToy.lua
+
+
