@@ -35,6 +35,8 @@ AllHearthToyIndex.Locales.enUS = {
 	[263489] = { spellId = 1270583, name = "Naaru's Enfold"},
 	[263933] = { spellId = 1270814, name = "Preyseeker's Hearthstone"},
 	[257736] = { spellId = 1261979, name = "Lightcalled Hearthstone"},
+	[281136] = { spellId = 1310234, name = "Hiveborne Hearthstone"},
+	[281615] = { spellId = 1311934, name = "Shadeweaver's Hearthstone"},
 	[265100] = { spellId = 1273401, name = "Corewarden's Hearthstone"},
 
 	-- got a bug report that this HS gets stuck if character os not Draenei, disabling for now

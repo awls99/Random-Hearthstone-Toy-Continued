@@ -35,6 +35,8 @@ AllHearthToyIndex.Locales.ptBR = {
 	[263489] = { spellId = 1270583, name = "Abraço dos Naaru" },
 	[263933] = { spellId = 1270814, name = "Pedra de Regresso do Rapinante"},
 	[257736] = { spellId = 1261979, name = "Pedra de Regresso Tocada pela Luz" },
+	[281136] = { spellId = 1310234, name = "Pedra de Regresso Colmeinata" },
+	[281615] = { spellId = 1311934, name = "Pedra de Regresso do Criassombras" },
 	[265100] = { spellId = 1273401, name = "Pedra de Regresso do Guarda-núcleo"},
 
 	-- got a bug report that this HS gets stuck if character os not Draenei, disabling for now

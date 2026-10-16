@@ -34,5 +34,7 @@ AllHearthToyIndex.Locales.esES = {
 	[263489] = { spellId = 1270583, name = "Envoltorio de Naaru"},
 	[263933] = { spellId = 1270814, name = "Piedra de hogar de buscapresas"},
 	[257736] = { spellId = 1261979, name = "Piedra de hogar de la Luz"},
+	[281136] = { spellId = 1310234, name = "Piedra de hogar de la colmena"},
+	[281615] = { spellId = 1311934, name = "Piedra de hogar de tejesombras"},
 	[265100] = { spellId = 1273401, name = "Piedra de hogar de celador del núcleo"},
 }
