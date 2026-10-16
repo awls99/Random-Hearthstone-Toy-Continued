@@ -34,4 +34,6 @@ AllHearthToyIndex.Locales.frFR = {
   [263489] = { spellId = 1270583, name = "Étreinte des Naaru"},
   [263933] = { spellId = 1270814, name = "Pierre de foyer de la traque"},
   [257736] = { spellId = 1261979, name = "Pierre de foyer de lumappel"},
+  [281136] = { spellId = 1310234, name = "Pierre de foyer essaimante"},
+  [281615] = { spellId = 1311934, name = "Pierre de foyer de tissombre"},
 }

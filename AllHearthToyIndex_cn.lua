@@ -34,6 +34,8 @@ AllHearthToyIndex.Locales.zhCN = {
 	[263489] = { spellId = 1270583, name = "那魯的擁抱"},
 	[263933] = { spellId = 1270814, name = "寻猎者的炉石"},
 	[257736] = { spellId = 1261979, name = "圣光呼唤炉石"},
+	[281136] = { spellId = 1310234, name = "虫巢之裔炉石"},
+	[281615] = { spellId = 1311934, name = "织影者的炉石"},
 -- got a bug report that this HS gets stuck if character os not Draenei, disabling for now
 -- AllHearthToyIndex[210455] = { spellId = 438606, name = "德莱尼全息宝石"}
 }
