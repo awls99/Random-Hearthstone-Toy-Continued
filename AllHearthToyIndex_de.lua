@@ -36,6 +36,7 @@ AllHearthToyIndex.Locales.deDE = {
 	[257736] = { spellId = 1261979, name = "Lichtgerufener Ruhestein"},
 	[281136] = { spellId = 1310234, name = "Ruhestein der Schwarmbrut"},
 	[281615] = { spellId = 1311934, name = "Ruhestein des Schattenwebers"},
+	[265100] = { spellId = 1273401, name = "Ruhestein der Kernwächterin"},
 -- got a bug report that this HS gets stuck if character os not Draenei, disabling for now
 -- AllHearthToyIndex[210455] = { spellId = 438606, name = "Draenischer Holostein"}
 }

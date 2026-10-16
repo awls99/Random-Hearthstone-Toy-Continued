@@ -37,6 +37,7 @@ AllHearthToyIndex.Locales.ptBR = {
 	[257736] = { spellId = 1261979, name = "Pedra de Regresso Tocada pela Luz" },
 	[281136] = { spellId = 1310234, name = "Pedra de Regresso Colmeinata" },
 	[281615] = { spellId = 1311934, name = "Pedra de Regresso do Criassombras" },
+	[265100] = { spellId = 1273401, name = "Pedra de Regresso do Guarda-núcleo"},
 
 	-- got a bug report that this HS gets stuck if character os not Draenei, disabling for now
 	-- [210455] = { spellId = 438606, name = "Draenic Hologem" },

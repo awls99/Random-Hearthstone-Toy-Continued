@@ -99,8 +99,8 @@ C_Timer.After(timeOut, function()
 		if C_ToyBox.GetNumToys() > 0 then
 			GetLearnedStones()
 			if RHTInitialized then
-				SetRandomHearthToy()
 				registerOptions()
+				SetRandomHearthToy()
 				ticker:Cancel()
 			end
 		end

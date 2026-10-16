@@ -36,6 +36,7 @@ AllHearthToyIndex.Locales.koKR = {
 	[257736] = { spellId = 1261979, name = "빛의 부름 귀환석"},
 	[281136] = { spellId = 1310234, name = "둥지살이 귀환석"},
 	[281615] = { spellId = 1311934, name = "암흑술사의 귀환석"},
+	[265100] = { spellId = 1273401, name = "핵감시관의 귀환석"},
 	-- got a bug report that this HS gets stuck if character os not Draenei, disabling for now
 	-- [210455] = { spellId = 438606, name = "드레나이 투영석" },
 }

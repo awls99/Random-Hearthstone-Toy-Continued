@@ -36,4 +36,5 @@ AllHearthToyIndex.Locales.frFR = {
   [257736] = { spellId = 1261979, name = "Pierre de foyer de lumappel"},
   [281136] = { spellId = 1310234, name = "Pierre de foyer essaimante"},
   [281615] = { spellId = 1311934, name = "Pierre de foyer de tissombre"},
+  [265100] = { spellId = 1273401, name = "Pierre de foyer de garde-cœur"},
 }
